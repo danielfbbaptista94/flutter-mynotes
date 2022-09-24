@@ -29,6 +29,13 @@
             {
               "client_id": "768069262363-c6ampir5t32tmhakojgl0ugqcoh0un4e.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "768069262363-8braqcllknf926480gdf7pco201b7kjh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mynotes"
+              }
             }
           ]
         }
