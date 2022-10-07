@@ -12,6 +12,7 @@ class NotesService {
   final DatabaseConnection connection = DatabaseConnection();
   final UsersService usersService = UsersService();
   List<DatabaseNote> _notes = [];
+  DatabaseUser? _user;
 
   late final StreamController<List<DatabaseNote>> _notesStreamController;
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
@@ -27,8 +28,10 @@ class NotesService {
 
   factory NotesService() => _shared;
 
-  Future<void> cacheNotes() async {
-    final allNotes = await getNotes();
+  Future<void> cacheNotes({required String email}) async {
+    _user = await usersService.getUser(email: email);
+    // final allNotes = await getNotes();
+    final allNotes = await getNotesByUser(userId: _user!.id);
 
     _notes = allNotes.toList();
     _notesStreamController.add(_notes);

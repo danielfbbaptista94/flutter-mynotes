@@ -30,7 +30,7 @@ class _NotesViewState extends State<NotesView> {
     _connection.open();
     _usersService = UsersService();
     _notesService = NotesService();
-    _notesService.cacheNotes();
+    _notesService.cacheNotes(email: userEmail);
     super.initState();
   }
 
@@ -83,6 +83,12 @@ class _NotesViewState extends State<NotesView> {
                           onDeleteNote: (note) async {
                             await _notesService.deleteNote(id: note.id);
                           },
+                          onTap: (note) {
+                            Navigator.of(context).pushNamed(
+                              createUpdateNoteRoute,
+                              arguments: note,
+                            );
+                          },
                         );
                       } else {
                         return const CircularProgressIndicator();
@@ -100,7 +106,7 @@ class _NotesViewState extends State<NotesView> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed(
-            newNoteRoute,
+            createUpdateNoteRoute,
           );
         },
         child: const Icon(Icons.add),
