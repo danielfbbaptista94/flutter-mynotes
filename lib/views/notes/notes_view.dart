@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mynotes/constants/routes.dart';
 import 'package:mynotes/services/auth/auth_service.dart';
 import 'package:mynotes/services/crud/entities/note_database.dart';
-import 'package:mynotes/services/crud/entities/user_database.dart';
 import 'package:mynotes/services/crud/notes_service.dart';
 import 'package:mynotes/services/crud/users_service.dart';
 import 'package:mynotes/services/database/db_connection.dart';
